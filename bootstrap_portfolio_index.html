@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pius Mbinda — Portfolio</title>
+  <meta name="description" content="Portfolio website showcasing projects, services, and contact information. Built with Bootstrap 5, Swiper, and Isotope." />
+  <meta name="author" content="Pius Mbinda" />
+  <meta name="theme-color" content="#0d6efd" />
+
+  <!-- SEO: Open Graph / Twitter -->
+  <meta property="og:title" content="Pius Mbinda — Portfolio" />
+  <meta property="og:description" content="Data/Analytics Portfolio, projects, and services." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://picsum.photos/1200/630?random=1" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <!-- Custom Styles (minimal; extend as needed) -->
+  <style>
+    :root{--brand:#0d6efd;--bg:#0b1220;--muted:#6c757d}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#fff}
+    /* Preloader */
+    #preloader{position:fixed;inset:0;display:grid;place-items:center;background:#0b1220;z-index:2000;transition:opacity .4s ease}
+    #preloader .spinner{width:56px;height:56px;border:4px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Hero */
+    .hero{position:relative;min-height:85vh;display:grid;align-items:center;padding:6rem 0;background:linear-gradient(180deg, #0b1220 0%, #0b1220 60%, #ffffff 60%)}
+    .hero .badge{background:rgba(13,110,253,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .hero h1{color:#fff;font-weight:800;letter-spacing:-.02em}
+    .hero p.lead{color:#d0d4da}
+    .hero-illustration{max-width:560px;filter:drop-shadow(0 20px 80px rgba(13,110,253,.3))}
+
+    /* Navbar */
+    .navbar-blur{backdrop-filter:saturate(180%) blur(8px);background:rgba(11,18,32,.6)!important}
+    .navbar .nav-link{color:#e9ecef}
+    .navbar .nav-link.active,.navbar .nav-link:focus,.navbar .nav-link:hover{color:#fff}
+    .dropdown-menu{border-radius:1rem}
+
+    /* Hover cards */
+    .hover-up{transition:transform .25s ease, box-shadow .25s ease}
+    .hover-up:hover{transform:translateY(-4px);box-shadow:0 1rem 2rem rgba(0,0,0,.08)}
+
+    /* Progress bars */
+    .progress{height:10px;border-radius:999px}
+
+    /* Counters */
+    .counter{font-size:2rem;font-weight:700}
+    .counter + .text-muted{margin-top:.25rem;display:block}
+
+    /* Back to top */
+    #backToTop{position:fixed;right:1rem;bottom:1rem;display:none;z-index:1000}
+
+    /* Footer */
+    footer{background:#0b1220;color:#cfd3da}
+    footer a{color:#cfd3da}
+
+    /* Sections spacing */
+    section{padding:80px 0}
+    .section-title{margin-bottom:1.5rem}
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" aria-label="Loading">
+    <div class="spinner" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-blur">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home"><i class="bi bi-compass me-2"></i>Pius Mbinda</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#about" id="aboutMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#about">About Me</a></li>
+              <li><a class="dropdown-item" href="#skills">Skills</a></li>
+              <li><a class="dropdown-item" href="#funfacts">Fun Facts</a></li>
+              <li><hr class="dropdown-divider"/></li>
+              <li class="dropend">
+                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+                  <li><a class="dropdown-item" href="#contact">Contact</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary ms-lg-3">Hire Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 text-white">
+          <span class="badge rounded-pill mb-3 px-3 py-2">Available for freelance</span>
+          <h1 class="display-4">Data Analyst & Developer helping brands turn <span class="text-primary">data</span> into decisions.</h1>
+          <p class="lead mt-3">I build clean dashboards, automate pipelines, and craft delightful web experiences.</p>
+          <div class="d-flex gap-3 mt-4">
+            <a href="#projects" class="btn btn-primary btn-lg"><i class="bi bi-lightning-charge"></i> View Projects</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg"><i class="bi bi-envelope"></i> Contact</a>
+          </div>
+          <div class="d-flex align-items-center gap-3 mt-4">
+            <a class="text-white fs-4" href="https://x.com/DeFiNavigator" target="_blank" rel="noopener" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a class="text-white fs-4" href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a class="text-white fs-4" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img class="hero-illustration img-fluid rounded-4" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1400&auto=format&fit=crop" alt="Hero illustration"/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs (example for inner pages; visible as demo) -->
+  <div class="bg-light py-2">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#home">Home</a></li>
+          <li class="breadcrumb-item"><a href="#projects">Projects</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Overview</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h2 class="section-title fw-bold">About Me</h2>
+          <p class="text-secondary">I'm a Nairobi-based analyst with a statistics background who loves clean data, clear visuals, and efficient systems. I focus on delivering business impact through analytics & automation.</p>
+          <!-- Tabs -->
+          <ul class="nav nav-tabs mt-4" id="aboutTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-1" data-bs-toggle="tab" data-bs-target="#pane-1" type="button" role="tab" aria-controls="pane-1" aria-selected="true">Experience</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#pane-2" type="button" role="tab" aria-controls="pane-2" aria-selected="false">Education</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#pane-3" type="button" role="tab" aria-controls="pane-3" aria-selected="false">Tech Stack</button>
+            </li>
+          </ul>
+          <div class="tab-content p-3 border border-top-0 rounded-bottom" id="aboutTabsContent">
+            <div class="tab-pane fade show active" id="pane-1" role="tabpanel" aria-labelledby="tab-1">
+              <ul class="mb-0">
+                <li>Data Analyst — Built KPI dashboards (Looker/Power BI) used by 50+ stakeholders.</li>
+                <li>Automation — Python/SQL pipelines reducing reporting time by 70%.</li>
+                <li>Web — Portfolio & landing pages with Bootstrap + JS.</li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="pane-2" role="tabpanel" aria-labelledby="tab-2">
+              <p>BSc in Statistics. Continuous learning in analytics engineering & data science.</p>
+            </div>
+            <div class="tab-pane fade" id="pane-3" role="tabpanel" aria-labelledby="tab-3">
+              <p>Python, SQL, dbt, Power BI, Git/GitHub, HTML/CSS/JS, Bootstrap 5, Airbyte.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="p-4 border rounded-4 hover-up">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span>Python</span><span>90%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-4 border rounded-4 hover-up">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span>SQL</span><span>85%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-4 border rounded-4 hover-up">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span>Power BI</span><span>80%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts / Counters -->
+  <section id="funfacts" class="bg-light">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md-3">
+          <div class="counter" data-target="30">0</div>
+          <span class="text-muted">Projects</span>
+        </div>
+        <div class="col-md-3">
+          <div class="counter" data-target="15">0</div>
+          <span class="text-muted">Happy Clients</span>
+        </div>
+        <div class="col-md-3">
+          <div class="counter" data-target="1200">0</div>
+          <span class="text-muted">Cups of Coffee</span>
+        </div>
+        <div class="col-md-3">
+          <div class="counter" data-target="5">0</div>
+          <span class="text-muted">Years Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (Isotope Filter) -->
+  <section id="projects">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+        <div>
+          <h2 class="section-title fw-bold">Projects</h2>
+          <p class="text-secondary mb-0">Filter by category</p>
+        </div>
+        <div class="btn-group" role="group" aria-label="Filter projects">
+          <button class="btn btn-outline-secondary active" data-filter="*">All</button>
+          <button class="btn btn-outline-secondary" data-filter=".data">Data</button>
+          <button class="btn btn-outline-secondary" data-filter=".web">Web</button>
+          <button class="btn btn-outline-secondary" data-filter=".viz">Visualization</button>
+        </div>
+      </div>
+
+      <div class="row g-4 grid">
+        <!-- Item 1 -->
+        <div class="col-md-6 col-lg-4 grid-item data">
+          <div class="card border-0 shadow-sm rounded-4 hover-up h-100">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="ETL dashboard">
+            <div class="card-body">
+              <h5 class="card-title">Sales ETL Pipeline</h5>
+              <p class="card-text">Automated ingestion with Python & SQL; dbt models; daily KPI refresh.</p>
+              <a href="#" class="btn btn-primary btn-sm">View Case Study</a>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="col-md-6 col-lg-4 grid-item web">
+          <div class="card border-0 shadow-sm rounded-4 hover-up h-100">
+            <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Website build">
+            <div class="card-body">
+              <h5 class="card-title">Marketing Website</h5>
+              <p class="card-text">Lightweight Bootstrap site optimized for Core Web Vitals.</p>
+              <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="col-md-6 col-lg-4 grid-item viz">
+          <div class="card border-0 shadow-sm rounded-4 hover-up h-100">
+            <img src="https://images.unsplash.com/photo-1551281044-8d8a9b12a271?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="BI dashboard">
+            <div class="card-body">
+              <h5 class="card-title">Churn Dashboard</h5>
+              <p class="card-text">Power BI dashboard forecasting churn and intervention ROI.</p>
+              <a href="#" class="btn btn-primary btn-sm">Screenshots</a>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="col-md-6 col-lg-4 grid-item data">
+          <div class="card border-0 shadow-sm rounded-4 hover-up h-100">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="ML model">
+            <div class="card-body">
+              <h5 class="card-title">Lead Scoring Model</h5>
+              <p class="card-text">Logistic regression & XGBoost; +18% conversion lift.</p>
+              <a href="#" class="btn btn-primary btn-sm">Read More</a>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="col-md-6 col-lg-4 grid-item web viz">
+          <div class="card border-0 shadow-sm rounded-4 hover-up h-100">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Portfolio redesign">
+            <div class="card-body">
+              <h5 class="card-title">Portfolio Redesign</h5>
+              <p class="card-text">Accessible charts and interactive visuals for executive review.</p>
+              <a href="#" class="btn btn-primary btn-sm">Details</a>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6 -->
+        <div class="col-md-6 col-lg-4 grid-item data web">
+          <div class="card border-0 shadow-sm rounded-4 hover-up h-100">
+            <img src="https://images.unsplash.com/photo-1537432376769-00a4c1ecf00f?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Data app">
+            <div class="card-body">
+              <h5 class="card-title">Data App (Flask)</h5>
+              <p class="card-text">Self-serve query tool with caching & role-based auth.</p>
+              <a href="#" class="btn btn-primary btn-sm">Repo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-light">
+    <div class="container">
+      <h2 class="section-title fw-bold text-center">Services</h2>
+      <div class="row g-4 mt-1">
+        <div class="col-md-4">
+          <div class="p-4 border rounded-4 h-100 hover-up text-center">
+            <i class="bi bi-graph-up-arrow fs-1 text-primary"></i>
+            <h5 class="mt-3">Analytics & BI</h5>
+            <p class="text-secondary">KPI dashboards, cohort analysis, churn modeling, and A/B testing.</p>
+            <a href="#contact" class="btn btn-outline-primary btn-sm">Get a Quote</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 border rounded-4 h-100 hover-up text-center">
+            <i class="bi bi-hdd-stack fs-1 text-primary"></i>
+            <h5 class="mt-3">Data Engineering</h5>
+            <p class="text-secondary">ETL/ELT pipelines, dbt models, warehouse optimization, and QA.</p>
+            <a href="#contact" class="btn btn-outline-primary btn-sm">Get a Quote</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 border rounded-4 h-100 hover-up text-center">
+            <i class="bi bi-window fs-1 text-primary"></i>
+            <h5 class="mt-3">Web Development</h5>
+            <p class="text-secondary">Responsive sites with Bootstrap 5, performance-focused and SEO-ready.</p>
+            <a href="#contact" class="btn btn-outline-primary btn-sm">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials (Swiper) -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="section-title fw-bold mb-0">Testimonials</h2>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary btn-sm" id="prevTest"><i class="bi bi-arrow-left"></i></button>
+          <button class="btn btn-outline-secondary btn-sm" id="nextTest"><i class="bi bi-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="p-4 border rounded-4 shadow-sm h-100">
+              <p class="mb-2">“Pius built dashboards our execs use daily. Clear, fast, and actionable.”</p>
+              <div class="d-flex align-items-center gap-3">
+                <img class="rounded-circle" src="https://i.pravatar.cc/60?img=12" alt="Client" width="48" height="48"/>
+                <div><strong>Jane Kim</strong><div class="text-muted small">COO, RetailCo</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="p-4 border rounded-4 shadow-sm h-100">
+              <p class="mb-2">“Reduced reporting time by 70%. Highly recommend for analytics work.”</p>
+              <div class="d-flex align-items-center gap-3">
+                <img class="rounded-circle" src="https://i.pravatar.cc/60?img=32" alt="Client" width="48" height="48"/>
+                <div><strong>Ravi Patel</strong><div class="text-muted small">CTO, FinTech</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="p-4 border rounded-4 shadow-sm h-100">
+              <p class="mb-2">“Clean codebase and great communication across time zones.”</p>
+              <div class="d-flex align-items-center gap-3">
+                <img class="rounded-circle" src="https://i.pravatar.cc/60?img=5" alt="Client" width="48" height="48"/>
+                <div><strong>Maria Lopez</strong><div class="text-muted small">PM, SaaS</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action with Geolocation -->
+  <section class="py-5 bg-primary-subtle">
+    <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
+      <div>
+        <h3 class="fw-bold mb-1">Let's work together</h3>
+        <p class="mb-0 text-secondary">I respond within 24 hours. Share your project goals and timeline.</p>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="#contact" class="btn btn-primary"><i class="bi bi-chat-left-text"></i> Start a Project</a>
+        <button id="geoBtn" class="btn btn-outline-primary"><i class="bi bi-geo"></i> Use My Location</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h2 class="section-title fw-bold">Contact</h2>
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" id="name" name="name" required placeholder="Your name" />
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="you@example.com" />
+                <div class="invalid-feedback">Valid email required.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-control" id="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+                <div class="invalid-feedback">Please write a short message.</div>
+              </div>
+              <div class="col-12 d-flex align-items-center justify-content-between">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="consent" required>
+                  <label class="form-check-label" for="consent">You may contact me about this request.</label>
+                  <div class="invalid-feedback">Consent is required.</div>
+                </div>
+                <button class="btn btn-primary" type="submit">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+            <!-- Replace src with your Google Map embed -->
+            <iframe title="Map" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Nairobi&output=embed"></iframe>
+          </div>
+          <div class="mt-3 small text-muted" id="geoResult">Location: not set</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <h5 class="fw-bold">About</h5>
+          <p class="text-muted">Portfolio of Pius Mbinda: analytics, engineering, and web projects. Clean codebase. Developer-friendly. Fully responsive.</p>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <h5 class="fw-bold">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home">Back to top</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <h5 class="fw-bold">Newsletter</h5>
+          <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed! 🎉');">
+            <input type="email" class="form-control" placeholder="Email address" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+          <div class="d-flex gap-3 mt-3">
+            <a class="text-decoration-none" href="https://x.com/DeFiNavigator" target="_blank" rel="noopener" aria-label="Twitter"><i class="bi bi-twitter-x fs-4"></i></a>
+            <a class="text-decoration-none" href="#" aria-label="GitHub"><i class="bi bi-github fs-4"></i></a>
+            <a class="text-decoration-none" href="#" aria-label="LinkedIn"><i class="bi bi-linkedin fs-4"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 text-secondary" />
+      <div class="d-flex justify-content-between flex-wrap gap-2 small">
+        <span>© <span id="year"></span> Pius Mbinda. All rights reserved.</span>
+        <span>Built with Bootstrap 5 • Hosted on GitHub Pages</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="btn btn-primary rounded-circle p-3" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- JS: Bootstrap + Plugins (defer for speed) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+  <!-- App Scripts -->
+  <script>
+    // Remove preloader when page is ready
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.remove(), 400);
+      }
+    });
+
+    // Back to top button visibility
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) backBtn.style.display = 'inline-flex';
+      else backBtn.style.display = 'none';
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Swiper init
+    window.addEventListener('DOMContentLoaded', () => {
+      const swiper = new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '#nextTest', prevEl: '#prevTest' },
+        breakpoints: { 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
+      });
+    });
+
+    // Isotope init
+    window.addEventListener('DOMContentLoaded', () => {
+      const grid = document.querySelector('.grid');
+      if (!grid) return;
+      const iso = new Isotope(grid, { itemSelector: '.grid-item', layoutMode: 'masonry' });
+      document.querySelectorAll('[data-filter]').forEach(btn => {
+        btn.addEventListener('click', e => {
+          document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+          e.currentTarget.classList.add('active');
+          iso.arrange({ filter: e.currentTarget.getAttribute('data-filter') });
+        });
+      });
+    });
+
+    // Counters
+    const counters = document.querySelectorAll('.counter');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target; const target = +el.dataset.target; let c = 0; const inc = Math.ceil(target/100);
+          const tick = () => { c += inc; if (c > target) c = target; el.textContent = c.toLocaleString(); if (c < target) requestAnimationFrame(tick); };
+          tick(); observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => observer.observe(c));
+
+    // Form validation
+    (() => {
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          } else {
+            event.preventDefault();
+            alert('Thanks! Your message has been sent.');
+            form.reset();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    // Geolocation
+    const geoBtn = document.getElementById('geoBtn');
+    const geoResult = document.getElementById('geoResult');
+    if (geoBtn) {
+      geoBtn.addEventListener('click', () => {
+        if (!('geolocation' in navigator)) {
+          geoResult.textContent = 'Geolocation not supported by your browser.';
+          return;
+        }
+        geoResult.textContent = 'Fetching location…';
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            const { latitude, longitude } = pos.coords;
+            geoResult.textContent = `Location: ${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+          },
+          err => {
+            geoResult.textContent = 'Permission denied or unavailable.';
+          },
+          { enableHighAccuracy: true, timeout: 8000 }
+        );
+      });
+    }
+  </script>
+</body>
+</html>
